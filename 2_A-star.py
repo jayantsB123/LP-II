@@ -9,6 +9,16 @@ def hn(initial_state, final_state):
                 misplaced_tiles += 1
     return misplaced_tiles
 
+def hn(state, final_state):
+    distance = 0
+    for i in range(3):
+        for j in range(3):
+            value = state[i][j]
+            if value != -1:
+                goal_pos = [(r, c) for r in range(3) for c in range(3) if final_state[r][c] == value][0]
+                distance += abs(i - goal_pos[0]) + abs(j - goal_pos[1])
+    return distance
+
 
 def find_blank(state):
     for i in range(3):
